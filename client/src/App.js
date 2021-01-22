@@ -16,7 +16,7 @@ export default function App () {
   useEffect(() => {
     const getMovies = () => {
       axios
-        .get('http://localhost:5000/api/movies') // Study this endpoint with Postman
+        .get('http://localhost:5000/api/movies')
         .then(response => {
           setMovieList(response.data)
         })

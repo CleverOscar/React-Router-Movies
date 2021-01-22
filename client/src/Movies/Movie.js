@@ -6,26 +6,23 @@ export default function Movie() {
 
   const [movie, setMovie] = useState();
 
-  const {path, url} = useParams();
+  const params = useParams();
 
-  let id = 1;
+  console.log("Mounted",movie)
+  
+  let id = params.id;
   // Change ^^^ that line and use a hook to obtain the :id parameter from the URL
 
   useEffect(() => {
     axios
       .get(`http://localhost:5000/api/movies/${id}`) 
       .then(response => {
-        // Study this response with a breakpoint or log statementså
-        console.log(response)
-        // and set the response data as the 'movie' slice of state
         setMovie(response.data)
       })
       .catch(error => {
         console.error(error);
       });
-    // This effect should run every time time
-    // the `id` changes... How could we do this?
-  }, []);
+  }, [id]);
 
   // Uncomment this only when you have moved on to the stretch goals
   // const saveMovie = evt => { }
